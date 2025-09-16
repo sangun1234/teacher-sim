@@ -1,0 +1,63 @@
+body {
+  background: #f0f2f5;
+  min-height: 100vh;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.simulator-card {
+  background: #fff;
+  padding: 40px;
+  border-radius: 16px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+  max-width: 600px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+
+.scenario-title {
+  font-size: 1.2em;
+  color: #555;
+  margin-bottom: 15px;
+}
+
+.prompt-text {
+  font-size: 1.8em;
+  color: #333;
+  font-weight: bold;
+  margin-bottom: 40px;
+}
+
+.options-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.option-button {
+  padding: 20px;
+  font-size: 1.1em;
+  font-weight: 600;
+  border-radius: 10px;
+  cursor: pointer;
+  border: none;
+  color: #fff;
+  background: #343a40;
+  transition: background 0.2s;
+}
+
+.option-button.primary {
+  background: #007bff;
+}
+
+.option-button:hover {
+  background: #23272b;
+}
+
+.option-button.primary:hover {
+  background: #0056b3;
+}

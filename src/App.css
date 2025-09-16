@@ -1,0 +1,187 @@
+/* App.css */
+@import url('https://fonts.googleapis.com/css2?family=Pretendard:wght@400;500;600;700&display=swap');
+
+body {
+  font-family: 'Pretendard', sans-serif;
+  background-color: #f0f2f5;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+}
+
+/* --- 시나리오 선택 화면 --- */
+.picker-container {
+  background-color: white;
+  padding: 40px;
+  border-radius: 16px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+  text-align: center;
+}
+
+.picker-title {
+  font-size: 2em;
+  font-weight: 700;
+  color: #333;
+  margin-bottom: 30px;
+}
+
+.picker-options {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.picker-button {
+  padding: 18px 30px;
+  font-size: 1.1em;
+  font-weight: 600;
+  cursor: pointer;
+  border: none;
+  border-radius: 10px;
+  background-color: #007bff;
+  color: white;
+  transition: all 0.2s ease-in-out;
+}
+
+.picker-button:hover {
+  background-color: #0056b3;
+  transform: translateY(-2px);
+}
+
+
+/* --- 시뮬레이터 화면 --- */
+.simulator-card {
+  max-width: 600px;
+  width: 100%;
+  padding: 40px;
+  border-radius: 16px;
+  background-color: white;
+  box-shadow: 0 8px G(0, 0, 0, 0.08);
+  text-align: center;
+}
+
+.scenario-title {
+  font-size: 1.2em;
+  font-weight: 600;
+  color: #555;
+  margin-bottom: 15px;
+}
+
+.prompt-text {
+  font-size: 1.8em;
+  font-weight: 500;
+  color: #333;
+  margin-bottom: 40px;
+  line-height: 1.6;
+}
+
+.options-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.option-button {
+  padding: 20px;
+  font-size: 1.1em;
+  font-weight: 600;
+  cursor: pointer;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  background-color: #f9f9f9;
+  color: #333;
+  transition: all 0.2s ease-in-out;
+}
+
+.option-button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  border-color: #007bff;
+}
+
+/* Primary Button Style (Blue) */
+.option-button.primary {
+  background-color: #007bff;
+  color: white;
+  border: none;
+}
+
+.option-button.primary:hover {
+  background-color: #0056b3;
+  border-color: #0056b3;
+}
+/* ...App.css 내에 추가... */
+.result-card {
+  background: #fff;
+  padding: 40px;
+  border-radius: 16px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+  max-width: 800px;
+  margin: 40px auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.card-title {
+  font-size: 2em;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.card-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 40px;
+}
+
+.chart-container {
+  width: 100%;
+  min-width: 220px;
+  height: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.feedback-container h3 {
+  font-size: 1.3em;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.feedback-container p,
+.feedback-container li {
+  font-size: 1em;
+  line-height: 1.6;
+  color: #555;
+}
+
+.feedback-container ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.restart-button {
+  background: #007bff;
+  color: #fff;
+  padding: 15px 30px;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  font-size: 1.1em;
+  font-weight: 600;
+  transition: background 0.2s;
+  margin-top: 20px;
+}
+
+.restart-button:hover {
+  background: #0056b3;
+}
