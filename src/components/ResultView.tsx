@@ -19,8 +19,8 @@ const RADAR_LABELS = [
 export default function ResultView({ scenario, score, endId, onRestart }: Props) {
   const radarData = RADAR_LABELS.map(({ key, label }) => ({
     subject: label,
-    score: score[key] ?? 0, // 'value'에서 'score'로 변경하여 명확성 증대
-    fullMark: 50,
+    score: score[key] ?? 0,
+    fullMark: 40,
   }));
 
   const ending = scenario.endings?.[endId];
@@ -32,15 +32,15 @@ export default function ResultView({ scenario, score, endId, onRestart }: Props)
     <div className="result-card">
       <h2 className="card-title">최종 역량 진단 결과</h2>
       <div className="card-content">
-        <div className="chart-container">
-          <ResponsiveContainer width="100%" height={350}>
-            <RadarChart data={radarData} margin={{ top: 20, right: 30, left: 30, bottom: 5 }}>
+        <div className="chart-container" style={{ minWidth: 320, height: 400 }}>
+          <ResponsiveContainer width="100%" height={380}>
+            <RadarChart data={radarData} margin={{ top: 30, right: 40, left: 40, bottom: 30 }}>
               <PolarGrid stroke="#e0e0e0" />
               <PolarAngleAxis 
                 dataKey="subject" 
-                tick={{ fontSize: 14, fontWeight: 600, fill: '#333' }} 
+                tick={{ fontSize: 16, fontWeight: 600, fill: '#333' }} 
               />
-              <PolarRadiusAxis angle={90} domain={[0, 20]} tick={false} axisLine={false} />
+              <PolarRadiusAxis angle={30} domain={[0, 40]} tick={false} axisLine={false} />
               <Radar 
                 name="나의 역량" 
                 dataKey="score" 

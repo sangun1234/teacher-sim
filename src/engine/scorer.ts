@@ -18,7 +18,6 @@ export function applyEffects(score: ScoreState, eff?: Effects): ScoreState {
   }
   // 3. 수정된 복사본을 반환합니다.
   
-  console.log(newScore)
   return newScore;
 }
 
