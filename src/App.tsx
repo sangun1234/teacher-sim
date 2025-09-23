@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import type { ScenarioFile } from "./types";
 import { type ScoreState } from "./engine/scorer";
 import Simulator from "./components/Simulator";
@@ -17,7 +17,7 @@ import charScience from "./assets/characters/science/sc_teacher.png";
 export default function App() {
   const [scenario, setScenario] = useState<ScenarioFile | null>(null);
   const [done, setDone] = useState<{ score: ScoreState; endId: string } | null>(null);
-  const [log, setLog] = useState<any>({
+  const [_log, setLog] = useState<any>({
     scenarioId: null,
     scenarioTitle: null,
     selections: [],

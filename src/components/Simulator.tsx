@@ -44,7 +44,7 @@ const Simulator: React.FC<SimulatorProps> = ({
   // 타이핑 효과
   const [displayedText, setDisplayedText] = useState<string>("");
   const [isTyping, setIsTyping] = useState<boolean>(true);
-  const typingInterval = useRef<NodeJS.Timeout | null>(null);
+  const typingInterval = useRef<number | null>(null);
 
   // 시나리오별 기본 캐릭터 이름
   const defaultCharacterName =
@@ -73,7 +73,7 @@ const Simulator: React.FC<SimulatorProps> = ({
   }, [dialogue]);
 
   // 선택지 클릭 시: 대사 출력 모드로 전환 + 기록 + 히스토리 저장
-  const handleOptionClick = (option: ScenarioOption) => {
+  const handleOptionClick = (option: ScenarioOption, idx: number) => {
     // 현재 상태를 히스토리에 저장
     setHistory(prev => [
       ...prev,
@@ -86,9 +86,9 @@ const Simulator: React.FC<SimulatorProps> = ({
       },
     ]);
     if (onRecordSelection) {
-      onRecordSelection(currentNode.id, option.id, option.text);
+      onRecordSelection(currentNode.id, idx.toString(), option.text);
     }
-    setDialogue(option.response);
+    setDialogue(option.text);
     setMode("response");
     setPendingOption(option);
     setScore(prevScore => applyEffects(prevScore, option.effects));
@@ -191,7 +191,7 @@ const Simulator: React.FC<SimulatorProps> = ({
             <button
               key={idx}
               className="option-button"
-              onClick={() => handleOptionClick(option)}
+              onClick={() => handleOptionClick(option, idx)}
               style={{
                 fontSize: "1.1em",
                 padding: "1.1em 2em",

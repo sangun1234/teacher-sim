@@ -2,7 +2,7 @@ export type Competency = "수업설계" | "수업실행" | "학생평가" | "수
 
 export type Effects = Partial<Record<Competency, number>>;
 
-export interface ScenarioOption {
+export interface ScenarioOption { 
   text: string;
   goto: string;        // 다음 노드 ID 또는 "end:*"
   effects?: Effects;   // 역량 가중치
