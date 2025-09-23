@@ -1,0 +1,114 @@
+.root {
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+  overflow: hidden;
+  font-family: 'Pretendard', 'sans-serif';
+}
+
+.background {
+  position: absolute;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  background-size: cover;
+  background-position: center;
+  filter: blur(6px) brightness(0.95);
+  z-index: 0;
+}
+
+.characterSprite {
+  position: absolute;
+  left: 0;           /* 중앙 → 왼쪽 여백으로 이동 */
+  bottom: 0;
+  transform: none;     /* 중앙 정렬 해제 */
+  height: 80vh;
+  max-height: 90vh;
+  object-fit: contain;
+  z-index: 2;
+  pointer-events: none;
+  user-select: none;
+}
+
+.mainPanel {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: 0 auto;
+  width: 92vw;
+  min-height: 22vh;
+  max-height: 34vh;
+  background: 
+    repeating-linear-gradient(
+      to bottom, 
+      rgba(255,255,255,0.92) 0px, 
+      rgba(255,255,255,0.92) 38px, 
+      rgba(200,200,200,0.10) 39px, 
+      rgba(255,255,255,0.92) 40px
+    ),
+    url('./panel-texture.png');
+  background-blend-mode: lighten;
+  border-radius: 32px 38px 28px 36px / 36px 32px 38px 28px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.18);
+  border: 2.5px solid #e0e0e0;
+  padding: 2.8em 2.2em 3.2em 2.2em;
+  box-sizing: border-box;
+  z-index: 3;
+  overflow: visible;
+}
+
+.nameTag {
+  position: absolute;
+  top: -1.7em;
+  left: 2.2em;
+  background: #3b5998;
+  color: #fff;
+  padding: 0.55em 1.3em;
+  border-radius: 16px;
+  font-size: 1.13em;
+  font-weight: 700;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.10);
+  letter-spacing: 0.04em;
+  border: 2px solid #fff;
+  z-index: 4;
+}
+
+.dialogueText {
+  font-size: 1.35em;
+  line-height: 1.8;
+  color: #222;
+  margin: 0;
+  white-space: pre-line;
+  word-break: keep-all;
+  font-weight: 500;
+  text-shadow: 0 1px 0 #fff, 0 0.5px 0 #eee;
+  padding-bottom: 1.8em;
+}
+
+.systemMenu {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0.7em;
+  display: flex;
+  justify-content: center;
+  gap: 1.8em;
+  z-index: 5;
+}
+
+.systemMenuBtn {
+  background: none;
+  border: none;
+  color: #888;
+  font-size: 1em;
+  font-weight: 500;
+  cursor: pointer;
+  padding: 0.2em 0.7em;
+  border-radius: 6px;
+  transition: background 0.15s, color 0.15s;
+}
+.systemMenuBtn:hover {
+  background: #ececec;
+  color: #444;
+}
