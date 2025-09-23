@@ -6,9 +6,9 @@ type Props = {
 };
 
 const preset = [
-  { key: "과학", file: "/src/assets/scenarios/science.json" },
-  { key: "사회", file: "/src/assets/scenarios/social.json" },
-  { key: "수학", file: "/src/assets/scenarios/math.json" },
+  { key: "과학", file: "/assets/scenarios/science.json" },
+  { key: "사회", file: "/assets/scenarios/social.json" },
+  { key: "수학", file: "/assets/scenarios/math.json" },
 ];
 
 export default function ScenarioPicker({ onLoaded }: Props) {

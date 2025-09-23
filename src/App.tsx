@@ -5,9 +5,7 @@ import Simulator from "./components/Simulator";
 import ScenarioPicker from "./components/ScenarioPicker";
 import ResultView from "./components/ResultView";
 
-// 과학 시나리오용 배경/캐릭터 이미지 import (파일명에 맞게 수정)
-import bgScience from "./assets/backgrounds/science/sc_background.jpg";
-import charScience from "./assets/characters/science/sc_teacher.png";
+// 과학 시나리오용 배경/캐릭터 이미지 import (파일명에 맞게 수정
 // 아래는 아직 이미지가 없으므로 주석 처리
 // import bgMath from "./assets/backgrounds/math/classroom.jpg";
 // import charMath from "./assets/characters/math/teacher.png";
@@ -81,8 +79,8 @@ export default function App() {
   let characterImageUrl = "";
   if (scenario) {
     if (scenario.id.includes("science")) {
-      backgroundImageUrl = bgScience;
-      characterImageUrl = charScience;
+     backgroundImageUrl = "/assets/backgrounds/science/sc_background.jpg";
+      characterImageUrl = "/assets/characters/science/sc_teacher.png";
     }
     // else if (scenario.id.includes("math")) {
     //   backgroundImageUrl = bgMath;
