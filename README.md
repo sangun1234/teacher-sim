@@ -1,69 +1,57 @@
-# React + TypeScript + Vite
+# 교사 시뮬레이션 웹앱
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+이 프로젝트는 React, TypeScript, Vite 기반의 **교사 역할 시뮬레이션 웹앱**입니다.  
+사용자는 다양한 과목(과학, 사회, 수학 등)의 시나리오를 선택하여, 실제 교사 상황을 비주얼 노벨 스타일로 체험할 수 있습니다.
 
-Currently, two official plugins are available:
+## 주요 기능
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **시나리오 선택:**  
+  과목별 시나리오를 선택하여 상황별 의사결정 과정을 진행할 수 있습니다.
 
-## Expanding the ESLint configuration
+- **비주얼 노벨 UI:**  
+  대사가 한 글자씩 타이핑 효과로 출력되고, 선택지는 캐릭터(선생님) 이미지 위에 세로로 표시됩니다.
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- **선택지 및 진행 기록:**  
+  사용자의 모든 선택 내역, 시간 정보, 점수 등이 구조화된 형태로 localStorage에 저장되어,  
+  향후 교사의 선택 패턴 분석에 활용할 수 있습니다.
 
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+- **뒤로가기/홈 기능:**  
+  실수로 잘못 선택한 경우 뒤로가기로 이전 상황으로 돌아갈 수 있고,  
+  홈 버튼으로 언제든 시작화면으로 이동할 수 있습니다.
 
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
+- **모던한 디자인:**  
+  어두운 남색 계열의 방사형 그라데이션 배경, 카드형 과목 선택 UI 등 현대적인 디자인 적용.
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+## 폴더 구조
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+- `public/assets/` : 배경 이미지, 캐릭터 이미지 등 정적 리소스
+- `public/scenarios/` : 과목별 시나리오 JSON 파일
+- `src/components/` : 주요 UI 컴포넌트 (ScenarioPicker, Simulator, GameScreen, ResultView 등)
+- `src/types.ts` : 타입 정의
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## 실행 방법
 
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+1. 의존성 설치  
+   ```
+   npm install
+   ```
+
+2. 개발 서버 실행  
+   ```
+   npm run dev
+   ```
+
+3. 빌드  
+   ```
+   npm run build
+   ```
+
+## 기타 안내
+
+- 시나리오 및 이미지 파일은 `public` 폴더에 위치해야 정상적으로 동작합니다.
+- 기록 데이터는 브라우저의 localStorage에 저장됩니다.
+- 추가 시나리오 및 리소스는 `public/scenarios/`, `public/assets/`에 파일을 추가하면 됩니다.
+
+---
+
+문의 및 개선 제안은 언제든 환영합니다!

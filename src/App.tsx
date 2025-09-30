@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import  { useState } from "react";
 import type { ScenarioFile } from "./types";
 import { type ScoreState } from "./engine/scorer";
 import Simulator from "./components/Simulator";
