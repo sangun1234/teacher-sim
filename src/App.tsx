@@ -5,12 +5,7 @@ import Simulator from "./components/Simulator";
 import ScenarioPicker from "./components/ScenarioPicker";
 import ResultView from "./components/ResultView";
 
-// 과학 시나리오용 배경/캐릭터 이미지 import (파일명에 맞게 수정
-// 아래는 아직 이미지가 없으므로 주석 처리
-// import bgMath from "./assets/backgrounds/math/classroom.jpg";
-// import charMath from "./assets/characters/math/teacher.png";
-// import bgSocial from "./assets/backgrounds/social/street.jpg";
-// import charSocial from "./assets/characters/social/teacher.png";
+
 
 export default function App() {
   const [scenario, setScenario] = useState<ScenarioFile | null>(null);
