@@ -6,6 +6,7 @@ export interface ScenarioOption {
   text: string;
   goto: string;        // 다음 노드 ID 또는 "end:*"
   effects?: Effects;   // 역량 가중치
+  response?: string; // 이 줄을 추가!
 }
 
 export interface ScenarioNode {

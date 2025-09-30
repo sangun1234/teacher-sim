@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import type { ScenarioFile } from "./types";
 import { type ScoreState } from "./engine/scorer";
 import Simulator from "./components/Simulator";
@@ -82,30 +82,35 @@ export default function App() {
      backgroundImageUrl = "/assets/backgrounds/science/sc_background.jpg";
       characterImageUrl = "/assets/characters/science/sc_teacher.png";
     }
-    // else if (scenario.id.includes("math")) {
-    //   backgroundImageUrl = bgMath;
-    //   characterImageUrl = charMath;
-    // } else if (scenario.id.includes("social")) {
-    //   backgroundImageUrl = bgSocial;
-    //   characterImageUrl = charSocial;
-    // }
+    else if (scenario.id.includes("math")) {
+      backgroundImageUrl = "/assets/backgrounds/social/social_background.png";
+      characterImageUrl = "/assets/characters/math/math_teacher.png";
+    } else if (scenario.id.includes("social")) {
+      backgroundImageUrl = "/assets/backgrounds/social/social_background.png";
+      characterImageUrl = "/assets/characters/social/social_teacher.png";
+    }
   }
 
-  // 시나리오 종료 시 기록 저장
+  // 시나리오 종료 시 호출: 점수, 종료 ID 저장 및 로그를 localStorage에 저장
   function finishScenario(score: ScoreState, endId: string) {
-    setDone({ score, endId });
+    setDone({ score, endId }); // 완료 상태 저장
     setLog((prev: any) => {
+      // 종료 시간, 점수, 종료 ID 추가
       const newLog = { ...prev, endedAt: formatKoreanDateTime(new Date().toISOString()), score, endId };
+      // localStorage에 로그 저장 (새로고침해도 기록 유지)
       localStorage.setItem("teacher-sim-log", JSON.stringify(newLog));
       return newLog;
     });
   }
 
+  // 렌더링: 시나리오 선택, 시뮬레이터, 결과 화면 중 하나만 보여줌
   return (
     <div className="container">
+      {/* 시나리오가 선택되지 않았을 때: 시나리오 선택 화면 */}
       {!scenario && (
         <ScenarioPicker onLoaded={start} />
       )}
+      {/* 시나리오가 선택되고, 아직 끝나지 않았을 때: 시뮬레이터 화면 */}
       {scenario && !done && (
         <Simulator
           scenario={scenario}
@@ -115,12 +120,14 @@ export default function App() {
           onRecordSelection={recordSelection}
         />
       )}
+      {/* 시나리오가 끝났을 때: 결과 화면 */}
       {scenario && done && (
         <ResultView
           scenario={scenario}
           score={done.score}
           endId={done.endId}
           onRestart={() => {
+            // 다시 시작: 상태 초기화
             setScenario(null);
             setDone(null);
           }}

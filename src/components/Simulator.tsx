@@ -88,7 +88,7 @@ const Simulator: React.FC<SimulatorProps> = ({
     if (onRecordSelection) {
       onRecordSelection(currentNode.id, idx.toString(), option.text);
     }
-    setDialogue(option.text);
+    setDialogue(option.response ?? option.text);
     setMode("response");
     setPendingOption(option);
     setScore(prevScore => applyEffects(prevScore, option.effects));
