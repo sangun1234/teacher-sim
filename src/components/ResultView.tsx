@@ -38,7 +38,7 @@ export default function ResultView({ scenario, score, endId, onRestart }: Props)
               <PolarGrid stroke="#e0e0e0" />
               <PolarAngleAxis 
                 dataKey="subject" 
-                tick={{ fontSize: 16, fontWeight: 600, fill: '#333' }} 
+                tick={{ fontSize: 16, fontWeight: 600, fill: 'white' }} 
               />
               <PolarRadiusAxis angle={30} domain={[0, 40]} tick={false} axisLine={false} />
               <Radar 
