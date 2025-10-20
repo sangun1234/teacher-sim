@@ -1,12 +1,14 @@
 import { Radar, RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis, ResponsiveContainer, Legend, Tooltip } from "recharts";
 import type { ScenarioFile } from "../types";
 import { levelize } from "../engine/scorer";
+import FileBar from "./FileBar";
 
 type Props = {
   scenario: ScenarioFile;
   score: Record<string, number>;
   endId: string;
   onRestart: () => void;
+  log?: any;
 };
 
 const RADAR_LABELS = [
@@ -16,20 +18,27 @@ const RADAR_LABELS = [
   { key: "수업성찰", label: "수업성찰" },
 ];
 
-export default function ResultView({ scenario, score, endId, onRestart }: Props) {
-  const radarData = RADAR_LABELS.map(({ key, label }) => ({
-    subject: label,
-    score: score[key] ?? 0,
-    fullMark: 40,
-  }));
+export default function ResultView({ scenario, score, endId, onRestart, log }: Props) {
+  // 그래프에는 음수값을 0으로 표시하도록 처리
+  const radarData = RADAR_LABELS.map(({ key, label }) => {
+    const raw = score[key] ?? 0;
+    const displayScore = Math.max(0, raw); // 음수는 0으로 표시
+    return {
+      subject: label,
+      score: displayScore,
+      fullMark: 40,
+    };
+  });
 
   const ending = scenario.endings?.[endId];
   const feedback = ending?.feedback || "전반적으로 우수한 역량을 보였습니다. 일부 영역에서 추가적인 성장이 기대됩니다.";
-  const strengths = Object.keys(score).filter(k => score[k] >= 80);
-  const improvements = Object.keys(score).filter(k => score[k] < 80);
+  const strengths = Object.keys(score).filter(k => (score[k] ?? 0) >= 80);
+  const improvements = Object.keys(score).filter(k => (score[k] ?? 0) < 80);
 
   return (
     <div className="result-card">
+      <FileBar scenario={scenario} log={log} />
+
       <h2 className="card-title">최종 역량 진단 결과</h2>
       <div className="card-content">
         <div className="chart-container" style={{ minWidth: 320, height: 400 }}>

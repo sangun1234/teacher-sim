@@ -121,6 +121,7 @@ export default function App() {
           scenario={scenario}
           score={done.score}
           endId={done.endId}
+          log={_log}
           onRestart={() => {
             // 다시 시작: 상태 초기화
             setScenario(null);
